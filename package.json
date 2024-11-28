@@ -1,0 +1,25 @@
+{
+  "name": "data-entry-backend-node",
+  "version": "1.0.0",
+  "description": "An API for fetching and writing the visualization data from backend using NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinavgo1000/data-entry-backend-node.git"
+  },
+  "author": "Abhinav Goel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhinavgo1000/data-entry-backend-node/issues"
+  },
+  "homepage": "https://github.com/abhinavgo1000/data-entry-backend-node#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.3"
+  }
+}
