@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const formRoutes = require('./routes/formRoutes');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.use(cors(
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://abhinavgl:AbhinavMongoDB475391@cluster0.atsxdhb.mongodb.net/formDataDb', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
