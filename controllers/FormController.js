@@ -21,6 +21,19 @@ exports.getFormData = async (req, res) => {
     }
 };
 
+exports.getFormDataById = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract the ID from the request parameters
+        const data = await FormData.findById(id); // Fetch the document by ID
+        if (!data) {
+            return res.status(404).json({ message: 'Data not found' });
+        }
+        res.status(200).json(data); // Return the fetched data
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 // Controller to handle deleting form data
 exports.deleteFormData = async (req, res) => {
     try {

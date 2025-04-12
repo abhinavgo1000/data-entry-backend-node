@@ -1,5 +1,5 @@
 const express = require('express');
-const { saveFormData, getFormData, deleteFormData, updateFormData } = require('../controllers/FormController');
+const { saveFormData, getFormData, getFormDataById, deleteFormData, updateFormData } = require('../controllers/FormController');
 
 const router = express.Router();
 
@@ -8,6 +8,9 @@ router.post('/form/write-form-data', saveFormData);
 
 // Route to fetch form data
 router.get('/form/fetch-form-data', getFormData);
+
+// Route to fetch form data by ID
+router.get('/form/fetch-form-data/:id', getFormDataById);
 
 // Route to delete form data
 router.delete('/form/delete-form-data/:id', deleteFormData);
