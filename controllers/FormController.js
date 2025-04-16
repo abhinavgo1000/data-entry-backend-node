@@ -14,8 +14,26 @@ exports.saveFormData = async (req, res) => {
 // Controller to handle fetching form data
 exports.getFormData = async (req, res) => {
     try {
-        const data = await FormData.find();
-        res.status(200).json(data);
+        const { page = 1, limit = 25 } = req.query; // Default to page 1 and 10 items per page
+
+        // Convert page and limit to integers
+        const pageNumber = parseInt(page, 10);
+        const limitNumber = parseInt(limit, 10);
+
+        // Fetch paginated data
+        const data = await FormData.find()
+            .skip((pageNumber - 1) * limitNumber) // Skip documents for previous pages
+            .limit(limitNumber); // Limit the number of documents returned
+
+        // Get the total count of documents
+        const totalDocuments = await FormData.countDocuments();
+
+        res.status(200).json({
+            totalDocuments,
+            totalPages: Math.ceil(totalDocuments / limitNumber),
+            currentPage: pageNumber,
+            data,
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
