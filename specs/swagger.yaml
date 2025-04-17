@@ -1,0 +1,156 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Data Entry API"
+  description: "API for managing form data"
+host: "localhost:5000"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /form/write-form-data:
+    post:
+      summary: "Save form data"
+      description: "Saves form data to the database"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/FormData"
+      responses:
+        201:
+          description: "Data saved successfully"
+        400:
+          description: "Validation error"
+  /form/fetch-form-data:
+    get:
+      summary: "Fetch paginated form data"
+      description: "Fetches paginated form data from the database"
+      parameters:
+        - in: "query"
+          name: "page"
+          type: "integer"
+          description: "Page number"
+        - in: "query"
+          name: "limit"
+          type: "integer"
+          description: "Number of items per page"
+      responses:
+        200:
+          description: "Paginated form data"
+  /form/fetch-all-data:
+    get:
+      summary: "Fetch all form data"
+      description: "Fetches all form data from the database"
+      responses:
+        200:
+          description: "All form data"
+  /form/fetch-form-data/{id}:
+    get:
+      summary: "Fetch form data by ID"
+      description: "Fetches a single form data entry by its ID"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the form data"
+      responses:
+        200:
+          description: "Form data entry"
+        404:
+          description: "Data not found"
+  /form/delete-form-data/{id}:
+    delete:
+      summary: "Delete form data by ID"
+      description: "Deletes a single form data entry by its ID"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the form data"
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/FormData"
+      responses:
+        200:
+          description: "Data deleted successfully"
+        404:
+          description: "Data not found"
+  /form/update-form-data/{id}:
+    put:
+      summary: "Update form data by ID"
+      description: "Updates a single form data entry by its ID"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the form data"
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/FormData"
+      responses:
+        200:
+          description: "Data updated successfully"
+        404:
+          description: "Data not found"
+definitions:
+  FormData:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      telephone:
+        type: "string"
+      dateOfBirth: 
+        type: "string"
+      address: 
+        type: "string"
+      city: 
+        type: "string"
+      state: 
+        type: "string"
+      zip: 
+        type: "string"
+      country: 
+        type: "string"
+      productName: 
+        type: "string"
+      productType: 
+        type: "string"
+      productCategory: 
+        type: "string"
+      productBrand: 
+        type: "string"
+      productPrice: 
+        type: "number"
+      productModel: 
+        type: "string"
+      productPurchaseDate: 
+        type: "string"
+    required:
+      - "name"
+      - "email"
+      - "telephone"
+      - "dateOfBirth"
+      - "address"
+      - "city"
+      - "state"
+      - "zip"
+      - "country"
+      - "productName"
+      - "productType"
+      - "productCategory"
+      - "productBrand"
+      - "productPrice"
+      - "productModel"
+      - "productPurchaseDate"

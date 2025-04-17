@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const swaggerUi = require('swagger-ui-express');
+const fs = require('fs');
+const yaml = require('js-yaml');
 const formRoutes = require('./routes/formRoutes');
 
 const app = express();
@@ -33,6 +36,10 @@ db.once('open', () => {
 
 // Routes
 app.use('/api', formRoutes);
+
+// Swagger documentation
+const swaggerDocument = yaml.load(fs.readFileSync('./specs/swagger.yaml', 'utf8'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Start the server
 app.listen(PORT, () => {
