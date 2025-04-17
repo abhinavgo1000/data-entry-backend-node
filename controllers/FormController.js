@@ -52,6 +52,15 @@ exports.getFormDataById = async (req, res) => {
     }
 };
 
+exports.getAllFormData = async (req, res) => {
+    try {
+        const data = await FormData.find(); // Fetch all documents
+        res.status(200).json(data); // Return all data
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 // Controller to handle deleting form data
 exports.deleteFormData = async (req, res) => {
     try {
