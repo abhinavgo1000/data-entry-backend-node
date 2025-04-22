@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const swaggerUi = require('swagger-ui-express');
 const fs = require('fs');
 const yaml = require('js-yaml');
+const morgan = require('morgan');
 const formRoutes = require('./routes/formRoutes');
 
 const app = express();
@@ -22,6 +23,8 @@ app.use(cors(
     }
 )); // Enable CORS for all routes
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+
+app.use(morgan('dev')); // Logging middleware for HTTP requests
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
