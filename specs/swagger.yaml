@@ -39,6 +39,28 @@ paths:
       responses:
         200:
           description: "Paginated form data"
+          examples:
+            application/json:
+              totalDocuments: 100
+              totalPages: 10
+              currentPage: 1
+              data:
+                - name: "John Doe"
+                  email: "john.doe@example.com"
+                  telephone: "1234567890"
+                  dateOfBirth: "1990-01-01"
+                  address: "123 Main St"
+                  city: "New York"
+                  state: "NY"
+                  zip: "10001"
+                  country: "USA"
+                  productName: "Smartphone"
+                  productType: "Electronics"
+                  productCategory: "Mobile"
+                  productBrand: "BrandX"
+                  productPrice: 699.99
+                  productModel: "X123"
+                  productPurchaseDate: "2025-01-01"
   /form/fetch-all-data:
     get:
       summary: "Fetch all form data"
@@ -46,6 +68,24 @@ paths:
       responses:
         200:
           description: "All form data"
+          examples:
+            application/json:
+              - name: "Jane Doe"
+                email: "jane.doe@example.com"
+                telephone: "9876543210"
+                dateOfBirth: "1985-05-15"
+                address: "456 Elm St"
+                city: "Los Angeles"
+                state: "CA"
+                zip: "90001"
+                country: "USA"
+                productName: "Laptop"
+                productType: "Electronics"
+                productCategory: "Computers"
+                productBrand: "BrandY"
+                productPrice: 1299.99
+                productModel: "Y456"
+                productPurchaseDate: "2025-02-15"
   /form/fetch-form-data/{id}:
     get:
       summary: "Fetch form data by ID"
@@ -59,6 +99,24 @@ paths:
       responses:
         200:
           description: "Form data entry"
+          examples:
+            application/json:
+              name: "John Smith"
+              email: "john.smith@example.com"
+              telephone: "5551234567"
+              dateOfBirth: "1992-07-20"
+              address: "789 Oak St"
+              city: "Chicago"
+              state: "IL"
+              zip: "60601"
+              country: "USA"
+              productName: "Tablet"
+              productType: "Electronics"
+              productCategory: "Mobile"
+              productBrand: "BrandZ"
+              productPrice: 499.99
+              productModel: "Z789"
+              productPurchaseDate: "2025-03-10"
         404:
           description: "Data not found"
   /form/delete-form-data/{id}:
