@@ -8,6 +8,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const morgan = require('morgan');
 const formRoutes = require('./routes/formRoutes');
+const aboutMeRoutes = require('./routes/aboutMeRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -36,6 +37,7 @@ db.once('open', () => {
 
 // Routes
 app.use('/api', formRoutes);
+app.use('/api', aboutMeRoutes);
 
 // Swagger documentation
 const swaggerDocument = yaml.load(fs.readFileSync('./specs/swagger.yaml', 'utf8'));
