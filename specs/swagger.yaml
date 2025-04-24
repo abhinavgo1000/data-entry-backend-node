@@ -206,7 +206,10 @@ definitions:
         type: "string"
       productPurchaseDate: 
         type: "string"
-      message: 
+  AboutMeData:
+    type: "object"
+    properties:
+      message:
         type: "string"
       link:
         type: "string"
