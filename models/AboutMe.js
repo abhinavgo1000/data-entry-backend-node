@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { link } = require('..');
 
 const AboutMeSchema = new mongoose.Schema({
     message: { type: String, required: true },
