@@ -119,6 +119,16 @@ paths:
               productPurchaseDate: "2025-03-10"
         404:
           description: "Data not found"
+  /about-me:
+    get:
+      summary: "Fetch about me data"
+      description: "Fetches about me data from the database"
+      responses:
+        200:
+          description: "About me data"
+          examples:
+            application/json:
+              message: "This is a sample about me data."
   /form/delete-form-data/{id}:
     delete:
       summary: "Delete form data by ID"
@@ -195,6 +205,8 @@ definitions:
         type: "string"
       productPurchaseDate: 
         type: "string"
+      message: 
+        type: "string"
     required:
       - "name"
       - "email"
@@ -212,3 +224,4 @@ definitions:
       - "productPrice"
       - "productModel"
       - "productPurchaseDate"
+      - "message"
