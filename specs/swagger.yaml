@@ -8,21 +8,6 @@ basePath: "/api"
 schemes:
   - "http"
 paths:
-  /form/write-form-data:
-    post:
-      summary: "Save form data"
-      description: "Saves form data to the database"
-      parameters:
-        - in: "body"
-          name: "body"
-          required: true
-          schema:
-            $ref: "#/definitions/FormData"
-      responses:
-        201:
-          description: "Data saved successfully"
-        400:
-          description: "Validation error"
   /form/fetch-form-data:
     get:
       summary: "Fetch paginated form data"
@@ -130,26 +115,21 @@ paths:
             application/json:
               message: "This is a sample about me data."
               link: "https://example.com/about-me"
-  /form/delete-form-data/{id}:
-    delete:
-      summary: "Delete form data by ID"
-      description: "Deletes a single form data entry by its ID"
+  /form/write-form-data:
+    post:
+      summary: "Save form data"
+      description: "Saves form data to the database"
       parameters:
-        - in: "path"
-          name: "id"
-          required: true
-          type: "string"
-          description: "ID of the form data"
         - in: "body"
           name: "body"
           required: true
           schema:
             $ref: "#/definitions/FormData"
       responses:
-        200:
-          description: "Data deleted successfully"
-        404:
-          description: "Data not found"
+        201:
+          description: "Data saved successfully"
+        400:
+          description: "Validation error"
   /form/update-form-data/{id}:
     put:
       summary: "Update form data by ID"
@@ -168,6 +148,26 @@ paths:
       responses:
         200:
           description: "Data updated successfully"
+        404:
+          description: "Data not found"
+  /form/delete-form-data/{id}:
+    delete:
+      summary: "Delete form data by ID"
+      description: "Deletes a single form data entry by its ID"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          type: "string"
+          description: "ID of the form data"
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/FormData"
+      responses:
+        200:
+          description: "Data deleted successfully"
         404:
           description: "Data not found"
 definitions:
